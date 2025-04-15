@@ -26,5 +26,5 @@ export function useGameState(tileCountX: number, tileCountY: number, id: string)
     return () => clearInterval(interval);
   }, [loadGameState]);
 
-  return { gameData, error, reload: loadGameState };
+  return { gameData, error};
 }

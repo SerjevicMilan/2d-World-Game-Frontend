@@ -1,0 +1,16 @@
+.result-screen {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+  }
+
+  .result-screen.won h1 {
+    color: #00ff88;
+    text-shadow: 1px 1px #003f2e;
+  }
+
+  .result-screen.lost h1 {
+    color: #ff4444;
+    text-shadow: 1px 1px #330000;
+  }

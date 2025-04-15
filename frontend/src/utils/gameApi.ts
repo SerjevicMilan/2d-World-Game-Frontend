@@ -12,6 +12,8 @@ export interface GameData {
   coins: Coord[];
   enemy: Coord;
   player: Coord;
+  status: String;
+  isGameOver: boolean;
 }
 
 export const fetchGameData = async (
@@ -69,4 +71,3 @@ export const sendPlayerMove = async (id: string, direction: string): Promise<voi
     console.error("Error sending player movement:", error);
   }
 };
-
