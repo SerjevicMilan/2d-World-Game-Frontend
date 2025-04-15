@@ -1,4 +1,4 @@
-
+import { useEffect} from 'react';
 import { Stage, Layer } from 'react-konva';
 import FloorTiles from './FloorTiles';
 import WallTiles from './WallTiles';
@@ -29,14 +29,19 @@ export default function GameScene({
   enemy,
   player
 }: Props) {
+
+  useEffect(() => {
+    console.log("RENDER Player:", player);
+  }, [player]);
+
   return (
     <Stage width={width * tileSize} height={height * tileSize}>
       <Layer>
         <WallTiles tiles={walls} tileSize={tileSize} />
         <FloorTiles tiles={floors} tileSize={tileSize} />
         <Coins tiles={coins} tileSize={tileSize} />
-        <Enemies x={enemy.x} y={enemy.y} tileSize={tileSize} />
-        <Player x={player.x} y={player.y} tileSize={tileSize} />
+        <Enemies  x={enemy.x} y={enemy.y} tileSize={tileSize} />
+        <Player  x={player.x} y={player.y} tileSize={tileSize} />
       </Layer>
     </Stage>
   );

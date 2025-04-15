@@ -8,7 +8,7 @@ export interface ScreenInfo {
     tileCountY: number;
   }
 
-  export const getScreenTileInfo = (tileSize: number = 32): ScreenInfo => {
+  export const getScreenTileInfo = (tileSize: number = 24): ScreenInfo => {
     const width = window.innerWidth;
     const height = window.innerHeight;
 

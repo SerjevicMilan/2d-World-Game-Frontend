@@ -1,54 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import GameScene from './GameScene';
-import { fetchGameData, fetchGameLayout, GameData, GameLayout } from '../../utils/gameApi';
 import { getScreenTileInfo } from '../../utils/screen';
+import { useGameState } from '../../utils/useGameState';
+import { useWorldLayout } from '../../utils/useWorldLayout';
+import { usePlayerControls } from '../../utils/usePlayerControls';
 
 export default function Game() {
   const { tileSize, tileCountX, tileCountY } = getScreenTileInfo();
-  const id : string = '' + Math.random();
+  const sessionIdRef = useRef('' + Math.random());
+  const id = sessionIdRef.current;
 
-  const [gameData, setGameData] = useState<GameData | null>(null);
-  const [gameLayout, setGameLayout] = useState<GameLayout | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { layout, error: layoutError } = useWorldLayout(tileCountX, tileCountY, id);
+  const { gameData, error: stateError, reload: reloadGameState } = useGameState(tileCountX, tileCountY, id);
 
-  useEffect(() => {
-    const loadInit = async () => {
-      try {
-        const [layout, state] = await Promise.all([
-          fetchGameLayout(tileCountX, tileCountY, id),
-          fetchGameData(tileCountX, tileCountY, id)
-        ]);
-        setGameLayout(layout);
-        setGameData(state);
-        setLoading(false);
-      } catch (err) {
-        console.error(err);
-        setError('Failed to load game');
-        setLoading(false);
-      }
-    };
+  usePlayerControls(id, reloadGameState);
 
-    loadInit();
-  }, [tileCountX, tileCountY]);
+  if (layoutError || stateError) return <div>Error loading game</div>;
+  if (!layout || !gameData) return <div>Loading...</div>;
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-
-  console.log('gameData:', gameData);
-console.log('gameLayout:', gameLayout);
-console.log('player:', gameData?.player);
-
-  return gameData && gameLayout && gameData.player ? (
+  return (
     <GameScene
       tileSize={tileSize}
       width={tileCountX}
       height={tileCountY}
-      walls={gameLayout.walls}
-      floors={gameLayout.floors}
+      walls={layout.walls}
+      floors={layout.floors}
       coins={gameData.coins}
       enemy={gameData.enemy}
       player={gameData.player}
     />
-  ) : null;
+  );
 }
