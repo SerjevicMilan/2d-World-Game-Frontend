@@ -1,29 +1,28 @@
+// src/GameWrapper.tsx
 import { useState } from 'react';
 import Game from './Game/Game';
 import GameMenu from './Menu/GameMenu';
-
-type GameStatus = 'MENU' | 'PLAYING' | 'WON' | 'LOST' | 'QUIT';
+import { useEscapeToMenu, GameStatus } from '../utils/useEscapeToMenu';
 
 export default function GameWrapper() {
   const [status, setStatus] = useState<GameStatus>('MENU');
   const [sessionId, setSessionId] = useState('' + Math.random());
 
   const handlePlay = () => {
-    setSessionId('' + Math.random()); // create new session
+    setSessionId('' + Math.random());
     setStatus('PLAYING');
   };
 
   const handleQuit = () => {
     window.close();
-    // Fallback if close is blocked
-    setTimeout(() => {
-      setStatus('QUIT');
-    }, 100);
+    setTimeout(() => setStatus('QUIT'), 100);
   };
 
   const handleGameEnd = (result: 'WON' | 'LOST') => {
     setStatus(result);
   };
+
+  useEscapeToMenu(status, setStatus); // ✅ works with typed state now
 
   return (
     <div className="game-background">
@@ -37,8 +36,8 @@ export default function GameWrapper() {
 
       {status === 'QUIT' && (
         <div style={{ textAlign: 'center' }}>
-        <h1>👋 Thanks for playing!</h1>
-        <p>Feel free to close the window.</p>
+          <h1>👋 Thanks for playing!</h1>
+          <p>Feel free to close the window.</p>
         </div>
       )}
     </div>
