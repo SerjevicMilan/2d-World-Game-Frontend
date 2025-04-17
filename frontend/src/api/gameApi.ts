@@ -18,6 +18,10 @@ export interface GameData {
   isGameOver: boolean;
 }
 
+/**
+ * fetchGameData
+ * Fetches the current game state (player, enemy, coins) for a given session
+ */
 export const fetchGameData = async (
   width: number,
   height: number,
@@ -28,6 +32,10 @@ export const fetchGameData = async (
   return response.json();
 };
 
+/**
+ * fetchGameLayout
+ * Initializes or retrieves the tile layout (floors, walls) for a session
+ */
 export const fetchGameLayout = async (
   width: number,
   height: number,
@@ -38,6 +46,10 @@ export const fetchGameLayout = async (
   return response.json();
 };
 
+/**
+ * sendReady
+ * Notifies the backend that the client has loaded the layout and is ready
+ */
 export const sendReady = async (id: string): Promise<void> => {
   try {
     const response = await fetch(`${baseUrl}/api/ready?sessionId=${id}`, {
@@ -54,6 +66,10 @@ export const sendReady = async (id: string): Promise<void> => {
   }
 };
 
+/**
+ * sendPlayerMove
+ * Sends a player move command (W/A/S/D) to the backend for processing
+ */
 export const sendPlayerMove = async (id: string, direction: string): Promise<void> => {
   try {
     const response = await fetch(`${baseUrl}/api/move?sessionId=${id}`, {

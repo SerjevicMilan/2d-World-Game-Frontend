@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { sendPlayerMove, GameData } from '../api/gameApi';
 
+/**
+ * usePlayerControls
+ * - Listens for keyboard events when gameData is available
+ * - 200ms cooldown between moves
+ */
 export function usePlayerControls(
   id: string,
   gameData: GameData | null,
@@ -12,8 +17,10 @@ export function usePlayerControls(
   useEffect(() => {
     const handleKeyDown = async (event: KeyboardEvent) => {
       const now = Date.now();
+      // dont update if inside cooldown period
       if (now - lastMoveRef.current < cooldown) return;
 
+      // Calculate new player position based on key
       const key = event.key.toUpperCase();
       const deltas: Record<string, [number, number]> = {
         W: [0, -1],
@@ -25,6 +32,7 @@ export function usePlayerControls(
       const delta = deltas[key];
       if (!delta || !gameData) return;
 
+       // Mark time of this move
       lastMoveRef.current = now;
 
       // Optimistic local update
@@ -43,6 +51,7 @@ export function usePlayerControls(
       }
     };
 
+     // Attach and cleanup event listener
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [id, gameData, setGameData]);

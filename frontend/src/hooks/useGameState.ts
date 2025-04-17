@@ -2,6 +2,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { fetchGameData, GameData } from '../api/gameApi';
 
+/**
+ * useGameState
+ * - Fetches game state from server for given sessionId
+ * - Polls on mount and when sessionId changes
+ */
 export function useGameState(tileCountX: number, tileCountY: number, id: string) {
   const [gameData, setGameData] = useState<GameData | null>(null);
   const [error, setError] = useState<string | null>(null);

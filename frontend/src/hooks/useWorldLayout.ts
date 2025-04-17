@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { fetchGameLayout, GameLayout, sendReady } from '../api/gameApi';
 
+/**
+ * useWorldLayout
+ * - Retrieves the tile map (walls, floors) for the current session
+ * - Notifies the server that the client is ready after loading layout
+ */
 export function useWorldLayout(tileCountX: number, tileCountY: number, id: string) {
   const [layout, setLayout] = useState<GameLayout | null>(null);
   const [error, setError] = useState<string | null>(null);

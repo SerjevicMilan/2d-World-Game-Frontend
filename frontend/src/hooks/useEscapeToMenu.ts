@@ -3,6 +3,11 @@ import { useEffect } from 'react';
 
 export type GameStatus = 'MENU' | 'PLAYING' | 'WON' | 'LOST' | 'QUIT';
 
+/**
+ * useEscapeToMenu
+ * Listens for the Escape key when the game is in PLAYING status
+ * and switches game status back to MENU.
+ */
 export function useEscapeToMenu(
   status: GameStatus,
   setStatus: React.Dispatch<React.SetStateAction<GameStatus>>
