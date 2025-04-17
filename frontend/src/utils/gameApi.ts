@@ -1,3 +1,5 @@
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 export interface Coord {
   x: number;
   y: number;
@@ -21,7 +23,7 @@ export const fetchGameData = async (
   height: number,
   id: string
 ): Promise<GameData> => {
-  const response = await fetch(`/api/state?width=${width}&height=${height}&sessionId=${id}`);
+  const response = await fetch(`${baseUrl}/api/state?width=${width}&height=${height}&sessionId=${id}`);
   if (!response.ok) throw new Error('Failed to load game state');
   return response.json();
 };
@@ -31,14 +33,14 @@ export const fetchGameLayout = async (
   height: number,
   id: string
 ): Promise<GameLayout> => {
-  const response = await fetch(`/api/init?width=${width}&height=${height}&sessionId=${id}`);
+  const response = await fetch(`${baseUrl}/api/init?width=${width}&height=${height}&sessionId=${id}`);
   if (!response.ok) throw new Error('Failed to load game layout');
   return response.json();
 };
 
 export const sendReady = async (id: string): Promise<void> => {
   try {
-    const response = await fetch(`/api/ready?sessionId=${id}`, {
+    const response = await fetch(`${baseUrl}/api/ready?sessionId=${id}`, {
       method: 'POST',
     });
 
@@ -54,7 +56,7 @@ export const sendReady = async (id: string): Promise<void> => {
 
 export const sendPlayerMove = async (id: string, direction: string): Promise<void> => {
   try {
-    const response = await fetch(`/api/move?sessionId=${id}`, {
+    const response = await fetch(`${baseUrl}/api/move?sessionId=${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
