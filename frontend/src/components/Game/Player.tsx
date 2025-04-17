@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Player({ x, y, tileSize }: Props) {
-  const img = useImage('/public/assets/player.png');
+  const img = useImage('/assets/player.png');
   const imageRef = useRef<any>(null);
 
   // Animate on position change

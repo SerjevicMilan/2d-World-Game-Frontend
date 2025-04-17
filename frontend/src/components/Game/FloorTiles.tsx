@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function FloorTiles({ tiles, tileSize }: Props) {
-  const img = useImage('/public/assets/floor.jpeg');
+  const img = useImage('/assets/floor.jpeg');
   if (!img) return null;
 
   return (

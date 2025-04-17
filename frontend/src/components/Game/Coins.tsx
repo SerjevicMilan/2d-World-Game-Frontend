@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function Coins({ tiles, tileSize }: Props) {
-  const img = useImage('/public/assets/coin.png');
+  const img = useImage('/assets/coin.png');
   if (!img) return null;
 
   return (

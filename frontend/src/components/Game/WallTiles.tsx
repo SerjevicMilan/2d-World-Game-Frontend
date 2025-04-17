@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function WallTiles({ tiles, tileSize }: Props) {
-  const img = useImage('/public/assets/wall.jpeg');
+  const img = useImage('/assets/wall.jpeg');
   if (!img) return null;
 
   return (
