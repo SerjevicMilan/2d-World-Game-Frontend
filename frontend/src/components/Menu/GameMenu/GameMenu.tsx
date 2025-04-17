@@ -1,4 +1,4 @@
-import PixelButton from './PixelButton';
+import PixelButton from '../PixelButton/PixelButton';
 import './GameMenu.css';
 
 interface GameMenuProps {

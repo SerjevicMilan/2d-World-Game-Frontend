@@ -1,8 +1,8 @@
 // src/GameWrapper.tsx
 import { useState } from 'react';
-import Game from './Game/Game';
-import GameMenu from './Menu/GameMenu';
-import { useEscapeToMenu, GameStatus } from '../utils/useEscapeToMenu';
+import Game from '../Game/Game';
+import GameMenu from '../Menu/GameMenu/GameMenu';
+import { useEscapeToMenu, GameStatus } from '../../hooks/useEscapeToMenu';
 
 export default function GameWrapper() {
   const [status, setStatus] = useState<GameStatus>('MENU');

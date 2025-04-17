@@ -1,14 +1,14 @@
 
-import { Image as KonvaImage } from 'react-konva';
-import { useImage } from '../../utils/useImage';
+import { Image as KonvaImage  } from 'react-konva';
+import { useImage } from '../../../hooks/useImage';
 
 interface Props {
   tiles: { x: number; y: number }[];
   tileSize: number;
 }
 
-export default function WallTiles({ tiles, tileSize }: Props) {
-  const img = useImage('/assets/wall.jpeg');
+export default function FloorTiles({ tiles, tileSize }: Props) {
+  const img = useImage('/assets/floor.jpeg');
   if (!img) return null;
 
   return (

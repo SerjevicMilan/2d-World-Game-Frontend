@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { sendPlayerMove, GameData } from './gameApi';
+import { sendPlayerMove, GameData } from '../api/gameApi';
 
 export function usePlayerControls(
   id: string,

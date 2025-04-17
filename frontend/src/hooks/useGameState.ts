@@ -1,6 +1,6 @@
 // src/hooks/useGameState.ts
 import { useEffect, useState, useCallback } from 'react';
-import { fetchGameData, GameData } from '../utils/gameApi';
+import { fetchGameData, GameData } from '../api/gameApi';
 
 export function useGameState(tileCountX: number, tileCountY: number, id: string) {
   const [gameData, setGameData] = useState<GameData | null>(null);

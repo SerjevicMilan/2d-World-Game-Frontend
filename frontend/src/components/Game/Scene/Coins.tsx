@@ -1,5 +1,5 @@
 import { Group, Image as KonvaImage, Circle } from 'react-konva';
-import { useImage } from '../../utils/useImage';
+import { useImage } from '../../../hooks/useImage';
 
 interface Props {
   tiles: { x: number; y: number }[];

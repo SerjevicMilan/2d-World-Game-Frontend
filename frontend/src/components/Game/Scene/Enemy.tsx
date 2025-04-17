@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Konva from 'konva';
 import { Image as KonvaImage  } from 'react-konva';
-import { useImage } from '../../utils/useImage';
+import { useImage } from '../../../hooks/useImage';
 
 interface Props {
   x: number;

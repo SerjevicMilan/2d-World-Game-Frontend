@@ -39,9 +39,9 @@ export default function GameScene({
       <Layer>
         <WallTiles tiles={walls} tileSize={tileSize} />
         <FloorTiles tiles={floors} tileSize={tileSize} />
-        <Coins tiles={coins} tileSize={tileSize} />
         <Enemies  x={enemy.x} y={enemy.y} tileSize={tileSize} />
         <Player  x={player.x} y={player.y} tileSize={tileSize} />
+        <Coins tiles={coins} tileSize={tileSize} />
       </Layer>
     </Stage>
   );

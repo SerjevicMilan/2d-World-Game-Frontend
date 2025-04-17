@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import GameScene from './GameScene';
+import GameScene from './Scene/GameScene';
 import { getScreenTileInfo } from '../../utils/screen';
-import { useGameState } from '../../utils/useGameState';
-import { useWorldLayout } from '../../utils/useWorldLayout';
-import { usePlayerControls } from '../../utils/usePlayerControls';
+import { useGameState } from '../../hooks/useGameState';
+import { useWorldLayout } from '../../hooks/useWorldLayout';
+import { usePlayerControls } from '../../hooks/usePlayerControls';
 import RecreateWorldButton from './Button/RecreateWorldButton';
 import MobileControls from '../Controls/MobileControls';
-import { sendPlayerMove } from '../../utils/gameApi';
+import { sendPlayerMove } from '../../api/gameApi';
 
 
 interface GameProps {

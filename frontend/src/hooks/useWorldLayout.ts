@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchGameLayout, GameLayout, sendReady } from './gameApi';
+import { fetchGameLayout, GameLayout, sendReady } from '../api/gameApi';
 
 export function useWorldLayout(tileCountX: number, tileCountY: number, id: string) {
   const [layout, setLayout] = useState<GameLayout | null>(null);
