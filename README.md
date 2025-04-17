@@ -1,10 +1,10 @@
 # 2D World Game – Frontend
 
-🔗 **Live Demo:** [https://alenas.netlify.app/]
+ **Live Demo:** [https://alenas.netlify.app/]
 
 This is the React-based frontend for the 2D World Generation Game. It visually renders the tile-based world and communicates with the backend to update the game state in real-time.
 
-## 🖼 Features
+## Features
 
 - Grid-based 2D tile rendering
 - Player movement with arrow keys or on-screen buttons
@@ -13,14 +13,14 @@ This is the React-based frontend for the 2D World Generation Game. It visually r
 - Game status: running, won, lost
 - Button to recreate the world and restart the game
 
-## 🧱 Built With
+## Built With
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-## 📦 Getting Started
+## Getting Started
 
 ### 1. Install dependencies
 
@@ -40,7 +40,7 @@ npm run dev
 npm run build
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 Create a `.env` file in the root of `frontend/`:
 
@@ -48,7 +48,7 @@ Create a `.env` file in the root of `frontend/`:
 VITE_API_URL=http://localhost:8080
 ```
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 src/
@@ -60,6 +60,6 @@ src/
   └── main.tsx           # App entry point
 ```
 
-## 📡 API
+## API
 
-The frontend communicates with the backend through REST APIs and can be extended to use WebSockets.
+The frontend communicates with the backend through REST APIs.
